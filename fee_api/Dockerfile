@@ -1,14 +1,11 @@
 # Pull the latest ruby image
 FROM ruby:3.3.0
 
-# Create a working directory
-RUN mkdir /app2
-
 # Set the working directory
-WORKDIR /app2
+WORKDIR /app
 
 # Copy Gemfile
-COPY Gemfile /app2/Gemfile
+COPY Gemfile /app/Gemfile
 
 # Install dependencies
 RUN bundle install

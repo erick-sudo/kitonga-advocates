@@ -6,9 +6,9 @@ services:
     ports:
       - "4000:4000"
     environment:
-      - RAILS_ENV=production
+      - RAILS_ENV=development
       - PG_DATABASE_URL=postgres://advoc:advoc@postgres-db:5432/advoc
-      - MONGODB_DATABASE_URL=mongodb://advoc:advoc@mongodb-db:27017/advoc
+      - MONGODB_DATABASE_URL=mongodb://advoc:advoc@mongo-db:27017/advoc
     depends_on:
       - postgres-db
     networks:
@@ -23,11 +23,12 @@ services:
     networks:
       - advoc_network
 
-  mongo_db:
+  mongo-db:
     build: database/mongodb
-    container_name: mongo_advoc_db
     ports:
       - "27019:27017"
+    networks:
+      - advoc_network
 
   postgres-db:
     build: database/postgresql
